@@ -1,16 +1,64 @@
-# React + Vite
+# Proyecto 5: Dashboard de Licitaciones con React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta es una aplicación web front-end construida con React, diseñada para consumir y mostrar datos de la API pública de Mercado Público de Chile.
 
-Currently, two official plugins are available:
+## Descripción del Proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+El objetivo principal de esta aplicación es conectarse al endpoint de licitaciones de la API de Mercado Público para obtener y visualizar los **10 últimos registros (licitaciones) publicados**.
 
-## React Compiler
+La aplicación presenta esta lista en la página principal. Cada elemento de la lista es navegable, permitiendo al usuario hacer clic en una licitación específica para ser redirigido a una página de detalle. Esta segunda vista realiza una nueva llamada a la API para obtener y mostrar la información detallada de la licitación seleccionada (como el organismo comprador, el estado y la fecha de cierre).
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## Características Principales
 
-## Expanding the ESLint configuration
+* **Consumo de API Externa:** Conexión directa a la API de Mercado Público para obtener datos en tiempo real.
+* **Visualización de Datos:** Renderizado de la lista de las 10 licitaciones más recientes.
+* **Ruteo del Lado del Cliente:** Implementación de `react-router-dom` para gestionar la navegación entre la vista de lista y la vista de detalle.
+    * `/`: Página principal (listado de licitaciones).
+    * `/licitacion/:codigo`: Página de detalle para una licitación específica.
+* **Manejo de Estado con Hooks:** Uso de `useState` para manejar el estado de carga, errores y datos, y `useEffect` para controlar los efectos secundarios (llamadas a la API).
+* **Manejo de Errores:** Implementación de un `ErrorBoundary` de React para capturar y manejar errores de renderizado en la UI.
+* **Estilos:** Uso de `TailwindCSS` para un diseño de interfaz rápido y funcional.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tecnologías Utilizadas
+
+* Vite (como empaquetador de desarrollo)
+* React
+* React Router DOM
+* TailwindCSS
+
+## Instalación y Ejecución Local
+
+Para ejecutar este proyecto en un entorno local, siga los siguientes pasos:
+
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone [https://github.com/UDDBootcamp/app-web-con-react](https://github.com/UDDBootcamp/app-web-con-react)
+    ```
+
+2.  **Acceder a la carpeta del proyecto:**
+    ```bash
+    cd p5-dashboard
+    ```
+
+3.  **Instalar las dependencias:**
+    ```bash
+    npm install
+    ```
+
+4.  **Configurar el Ticket de API (Requerido):**
+    Esta aplicación requiere un "Ticket" (API Key) válido para conectarse a la API de Mercado Público. Debe editar los siguientes archivos y reemplazar el valor del *placeholder*:
+
+    * `src/pages/HomePage.jsx`
+    * `src/pages/DetailPage.jsx`
+
+    Busque la siguiente línea en ambos archivos y reemplace el texto:
+    ```javascript
+    const MI_TICKET = 'AQUI_VA_TU_TICKET_DE_API';
+    ```
+
+5.  **Iniciar el servidor de desarrollo:**
+    ```bash
+    npm run dev
+    ```
+
+La aplicación estará disponible en `http://localhost:5173`.
