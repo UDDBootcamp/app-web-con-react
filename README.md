@@ -26,6 +26,8 @@ La aplicación presenta esta lista en la página principal. Cada elemento de la 
 * React Router DOM
 * TailwindCSS
 
+Disponible en https://dashboard-mercado-publico.netlify.app
+
 ## Instalación y Ejecución Local
 
 Para ejecutar este proyecto en un entorno local, siga los siguientes pasos:
